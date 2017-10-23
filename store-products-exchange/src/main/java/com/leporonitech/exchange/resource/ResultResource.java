@@ -47,9 +47,6 @@ public class ResultResource extends BaseResource {
 	
         Result orders =  resultBusiness.findOrdersPeriod(offset, limit, customer_cpf, customer_cnpj, customer_id);
         
-       // if(!(orders.getErrorCode() == null)) {
-        //	return new ResponseEntity<>(orders, orders.getStatusCode());
-       // }
         
         
 		return new ResponseEntity<>(orders, OK);
@@ -67,9 +64,6 @@ public class ResultResource extends BaseResource {
 	
         Result orders =  resultBusiness.findOrdersEligibility(offset, limit, sub_ecommerce_id);
         
-       // if(!(orders.getErrorCode() == null)) {
-        //	return new ResponseEntity<>(orders, orders.getStatusCode());
-       // }
         
         
 		return new ResponseEntity<>(orders, OK);

@@ -123,8 +123,8 @@ public class ResultBusiness extends AuthenticationToken {
         	for(SubOrder s : r.getSubOrders()) {
         		
         		// Long busca a diferença de dias entre a entrega do pedido e a data atual
-        		Long daysDifference = differenceDays(s.getCreatedAt()); /*ALTERAR*/
-        																	// UTILIZAR A DATA DE ENTREGA DO PEDIDO E REMOVER ESSA ANOTAÇÂO
+        		Long daysDifference = differenceDays(s.getCreatedAt()); 
+        																	
         		   		
         		// Regra 1° verifica prazo de troca do produto
         		if(daysDifference > quantityDaysTDC) {

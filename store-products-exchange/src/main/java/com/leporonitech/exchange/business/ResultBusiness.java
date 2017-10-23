@@ -47,7 +47,7 @@ public class ResultBusiness extends AuthenticationToken {
 
 		Result params;
 		String result = null;
-		// ObjectMapper mapper = new ObjectMapper();
+		
 
 		ResponseEntity<Result> responseEntity = null;
 
@@ -79,7 +79,7 @@ public class ResultBusiness extends AuthenticationToken {
 	}
 
 	public Result findOrdersPeriod(Integer offset, Integer limit, String customer_cpf, String customer_cnpj, String customer_id) throws JsonParseException, JsonMappingException, IOException, CustomException{
-		String url = "https://stage.apiluiza.com.br/v2/legacy/orders?offset="+offset+"&limit="+limit;
+		String url = "/v2/legacy/orders?offset="+offset+"&limit="+limit; //Informar url dos dados para serem utilizados na pesquisa
 		
 		Result orders = null;
 		
@@ -140,7 +140,7 @@ public class ResultBusiness extends AuthenticationToken {
 	}
 
 	public Result findOrdersEligibility(Integer offset, Integer limit, String sub_ecommerce_id){
-		String url = "https://stage.apiluiza.com.br/v2/legacy/orders?offset="+offset+"&limit="+limit;
+		String url = "/v2/legacy/orders?offset="+offset+"&limit="+limit; //Informar url dos dados para serem utilizados na pesquisa
 		
 		Result orders = null;
 		
@@ -150,22 +150,14 @@ public class ResultBusiness extends AuthenticationToken {
 		
 		
 		
-		//ObjectMapper mapper = new ObjectMapper();
+		
         ResponseEntity<Result> responseEntity = null; 
 
         try {
             responseEntity = restTemplate.exchange(url, HttpMethod.GET, AuthenticationToken.tokenAuthentication(), new ParameterizedTypeReference<Result>() {});                     	
             orders = responseEntity.getBody();
         }catch(HttpClientErrorException e) {
-        	
-          // converte o erro da api consumida em objeto
-          //Result obj = mapper.readValue(e.getResponseBodyAsString(), Result.class);
-        	
-          // popula o objeto retornado e informa o status code devolvido
-         // orders = obj;
-         // orders.setStatusCode(e.getStatusCode());
-          
-          //return orders;
+        	   
 
         
         	throw new EntityNotFoundException("Orders");
